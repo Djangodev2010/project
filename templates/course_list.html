@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses - Sky World Classes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .container {''
+            width: 80%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        header {
+            background-color: #207bff;
+            color: white;
+            padding: 10px 7px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 65px;
+            padding-top: 50px;
+            font-weight: 700;
+        }
+
+        .nav-container {
+            margin-top: 10px;
+        }
+
+        a {
+            font-size: 30px;
+            color: white;
+            text-decoration: none;
+            border-radius: 0px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            padding: 10px 15px 35px;
+            margin: 1px;
+        }
+
+        a:hover {
+            background-color: #004494;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            max-height: 530px;
+            opacity: 0.2;
+            object-fit: cover;
+            z-index: 0;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        section p {
+            text-align: center;
+            margin: 0 0 20px;
+        }
+        
+        .contact-p {
+            font-size: 17px;
+        }
+        
+        .contact-h2 {
+            font-size: 35px;
+        }
+        
+        .contact-a {
+            font-size: 38px;
+        }
+        
+        .contact-p {
+            font-size: 30px;
+        }
+        
+        .contact-h2 {
+            font-size: 35px;
+        }
+        
+        .contact-a {
+            font-size: 42px;
+        }
+
+        footer {
+            font-size: 25px;
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .card {
+            display: inline-block;
+            width: 29%; /* Increase the width */
+            margin: 12px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            text-decoration: none;
+            color: black;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            font-size: 25px;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .card p {
+            font-size: 20px;
+            padding: 0 15px 20px;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        section p {
+            text-align: center;
+            margin: 0 0 20px;
+        }
+        
+        section a {
+            color: #c3c6c9;
+            font-size: 40px;
+        }
+        
+        /* Animation Styles */
+       .fade-up {
+            opacity: 0; /* Hidden at the start */
+            transform: translateY(20px); /* Start slightly below */
+            transition: all 0.6s ease; /* Smooth animation */
+        }
+
+       .fade-up.visible {
+            opacity: 1; /* Fade in */
+            transform: translateY(0); /* Move to original position */
+        }
+
+
+        /* Media Queries for Mobile */
+        @media (max-width: 768px) {
+            .container {
+                width: 92%;
+                padding: 0 10px;
+            }
+            
+            header {
+                padding: 10px 10px;
+            }
+            
+            header h1 {
+                font-size: 37px;
+                padding-top: 7px;
+                font-weight: 700;
+            }
+
+            a {
+                font-size: 17px;
+                color: white;
+                text-decoration: none;
+                border-radius: 0px;
+                display: inline-block;
+                transition: background-color 0.3s ease;
+                padding: 10px 1px 10px;
+                margin: 1px;
+            }
+            
+            a:hover {
+                background-color: #004494;
+            }
+            
+            .header-bg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                max-height: 230px;
+                opacity: 0.2;
+                object-fit: cover;
+                z-index: 0;
+            }
+            
+            .hero h2 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 20px;
+                bottom: 0%;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            section h2 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .card {
+                display: inline-block;
+                width: 90%;
+                margin: 10px;
+                background-color: white;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                text-decoration: none;
+                color: black;
+                transition: transform 0.2s;
+            }
+
+            .card:hover {
+                transform: scale(1.05);
+            }
+
+            .card h3 {
+                margin: 0;
+                padding: 10px;
+            }
+
+            .card p {
+                padding: 0 10px 20px;
+            }
+
+            .btn-container {
+                text-align: center;
+                margin: 20px 0;
+            }
+
+            .btn {
+                background-color: #007bff;
+                color: white;
+                font-size: 20px;
+                padding: 10px 15px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                text-decoration: none;
+                display: inline-block;
+            }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+            
+            .contact-h2 {
+                font-size: 27px;
+            }
+            
+            .contact-p {
+                font-size: 17px;
+            }
+            
+            .contact-a {
+                font-size: 17px;
+                text-decoration: none;
+            }
+            
+            footer {
+                font-size: 13px;
+                background-color: #343a40;
+                color: white;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .card {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="static/images/image.jpg" alt="Header Background" class="header-bg">
+        <div class="container">
+            <h1>Sky World Classes</h1>
+            <div>
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'about_us' %}">About Us</a>
+                <a href="{% url 'courses' %}">Courses</a>
+                <a href="mailto:info@skyworldclasses.com">Contact Us</a>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div id="container" class="fade-up">
+            <h2>Our Courses</h2>
+            <div id="courses-container">
+                {% for course in courses %}
+                <div class="card">
+                    <h3>{{ course.name }}</h3>
+                    <p class="limited-words">{{ course.description }}</p>
+                    <div class="btn-container">
+                        <a href="{% url 'course_detail' pk=course.id %}" class="btn">View Course Details</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section id="contact" style="background-color: #f0f0f0; padding: 30px 0;" class="fade-up">
+        <div class="container" style="text-allign: center;">
+            <h2 class="contact-h2">Contact Us</h2>
+            <p class="contact-p">If you have any questions or would like to enroll, please reach out to us at <a href="mailto:info@skyworldclasses.com" class="contact-a">info@skyworldclasses.com</a> or call us at 123-456-7890.</p>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sky World Classes. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function limitWords(selector, wordLimit) {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(element => {
+                let text = element.textContent.trim();
+                let words = text.split(/\s+/);
+                if (words.length > wordLimit) {
+                    element.textContent = words.slice(0, wordLimit).join(" ") + "...";
+                }
+            });
+        }
+
+    // Call the function and limit words to 50 in paragraphs with class 'limited-words'
+        limitWords('.limited-words', 11);
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const fadeElements = document.querySelectorAll(".fade-up");
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible"); // Trigger animation
+                            observer.unobserve(entry.target); // Stop observing
+                        }
+                    });
+                },
+                { threshold: 0.1 } // Trigger when 10% of the element is visible
+            );
+
+            fadeElements.forEach((element) => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

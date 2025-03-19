@@ -1,0 +1,445 @@
+{% load static %}
+{% load custom_filters %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Reviews - Sky World Classes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        header {
+            background-color: #207bff;
+            color: white;
+            padding: 10px 7px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 65px;
+            padding-top: 50px;
+            font-weight: 700;
+        }
+
+        .nav-container {
+            margin-top: 10px;
+        }
+
+        a {
+            font-size: 30px;
+            color: white;
+            text-decoration: none;
+            border-radius: 0px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            padding: 10px 15px 35px;
+            margin: 1px;
+        }
+
+        a:hover {
+            background-color: #004494;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            max-height: 530px;
+            opacity: 0.2;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .review-h1 {
+            text-align: center;
+            color: #207bff;
+            margin-top: 20px;
+            font-size: 36px;
+        }
+
+        .card {
+            display: inline-block;
+            width: 29%; /* Increase the width */
+            margin: 12px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            text-decoration: none;
+            color: black;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            font-size: 25px;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .card p {
+            font-size: 20px;
+            padding: 0 15px 20px;
+        }
+
+        footer {
+            font-size: 25px;
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 5px 0;
+        }
+        
+        .review-card {
+                border: 1px solid #e1e1e1;
+                padding: 15px;
+                margin: 15px 0;
+                border-radius: 8px;
+                background-color: #f9f9f9;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .review-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+
+            .stars {
+                display: flex;
+            }
+
+            .star {
+                font-size: 30px;
+                color: #ff9900;
+            }
+
+            .empty-star {
+                font-size: 30px;
+                color: #ccc;
+            }
+
+            .reviewer {
+                font-size: 17px;
+                font-weight: bold;
+                color: #555;
+            }
+
+            .review-text {
+                font-size: 14px;
+                color: #333;
+            }
+            
+            .review-a a{
+                text-align: center;
+                font-size: 13px;
+                color: blue;
+                display: block;
+            }
+            
+        .review-btn-container {
+                text-align: center;
+                margin: 20px 0;
+            }
+
+        .review-btn {
+            background-color: #007bff;
+            color: white;
+            font-size: 20px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .review-btn:hover {
+            background-color: #0056b3;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        section p {
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .contact-p {
+            font-size: 30px;
+        }
+        
+        .contact-h2 {
+            font-size: 35px;
+        }
+        
+        .contact-a {
+            font-size: 42px;
+        }
+
+        footer {
+            font-size: 25px;
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        
+        /* Animation Styles */
+       .fade-up {
+            opacity: 0; /* Hidden at the start */
+            transform: translateY(20px); /* Start slightly below */
+            transition: all 0.6s ease; /* Smooth animation */
+        }
+
+       .fade-up.visible {
+            opacity: 1; /* Fade in */
+            transform: translateY(0); /* Move to original position */
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                width: 92%;
+                padding: 0 10px;
+            }
+            
+            .container h2 {
+                font-size: 27px;
+            }
+
+            .nav-container a {
+                display: block;
+                margin: 10px 0;
+            }
+
+            header {
+                padding: 10px 7px;
+            }
+            
+            header h1 {
+                padding-top: 7px;
+                font-size: 37px;
+            }
+
+            a {
+                font-size: 17px;
+                color: white;
+                text-decoration: none;
+                border-radius: 0px;
+                display: inline-block;
+                transition: background-color 0.3s ease;
+                padding: 10px 1px 10px;
+                margin: 1px;
+            }
+            
+            .header-bg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                max-height: 440px;
+                opacity: 0.2;
+                object-fit: cover;
+                z-index: 0;
+            }
+
+            .review-card {
+                border: 1px solid #e1e1e1;
+                padding: 15px;
+                margin: 15px 0;
+                border-radius: 8px;
+                background-color: #f9f9f9;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+
+            .review-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+
+            .stars {
+                display: flex;
+            }
+
+            .star {
+                font-size: 20px;
+                color: #ff9900;
+            }
+
+            .empty-star {
+                font-size: 20px;
+                color: #ccc;
+            }
+
+            .reviewer {
+                font-weight: bold;
+                color: #555;
+            }
+
+            .review-text {
+                font-size: 14px;
+                color: #333;
+            }
+            
+            .review-a a{
+                text-align: center;
+                font-size: 20px;
+                color: blue;
+                display: block;
+            }
+            
+            .review-btn-container {
+                text-align: center;
+                margin: 20px 0;
+            }
+
+            .review-btn {
+                background-color: #007bff;
+                color: white;
+                font-size: 15px;
+                padding: 8px 12px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                text-decoration: none;
+                display: inline-block;
+            }
+
+            .review-btn:hover {
+                background-color: #0056b3;
+            }
+            
+            .contact-p {
+                font-size: 17px;
+            }
+            
+            .contact-a {
+                font-size: 17px;
+                text-decoration: none;
+            }
+            
+            footer {
+                font-size: 13px;
+                background-color: #343a40;
+                color: white;
+                text-align: center;
+                padding: 10px 0;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{% static 'images/image.jpg' %}" alt='banner' class='header-bg'>
+        <div class="container">
+            <h1>Sky World Classes</h1>
+            <div class="nav">
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'about_us' %}">About Us</a>
+                <a href="{% url 'courses' %}">Courses</a>
+                <a href="mailto:info@skyworldclasses.com">Contact Us</a>
+            </div>
+        </div>
+    </header>
+    <div class="container fade-up">
+        <h1 class="review-h1">Student Reviews</h1>
+        <div class="review-btn-container">
+            <a href="{% url 'submit_review' %}" class="review-btn ">Add A Review </a>
+        </div>
+        {% if reviews %}
+            <section id="reviews" class="fade-up">
+                <div class="container">
+                    <h2>Reviews</h2>
+                    <div id="reviews-container">
+                        {% for review in reviews|slice:":3" %}
+                        <div class="review-card">
+                            <div class="review-header">
+                                <div class="stars">
+                                    {% for i in review.rating|range_filter %}
+                                    <span class="star">&#9733;</span>
+                                    {% endfor %}
+                                    {% for i in 5|subtract:review.rating|range_filter %}
+                                    <span class="star empty-star">&#9734;</span>
+                                    {% endfor %}
+                                </div>
+                                <p class="reviewer">by {{ review.user.username }}</p>
+                            </div>
+                            <p class="review-text">{{ review.description }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        {% else %}
+            <p>No reviews available yet. Be the first to share your thoughts!</p>
+        {% endif %}
+    </div>
+
+    <section id="contact" style="background-color: #d9dbde; padding: 30px 0;" class="fade-up">
+        <div class="container">
+            <h2 class="contact-h2">Contact Us</h2>
+            <p class="contact-p">If you have any questions or would like to enroll, please reach out to us at <a href="mailto:info@skyworldclasses.com" class="contact-a">info@skyworldclasses.com</a> or call us at 123-456-7890.</p>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sky World Classes. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const fadeElements = document.querySelectorAll(".fade-up");
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible"); // Trigger animation
+                            observer.unobserve(entry.target); // Stop observing
+                        }
+                    });
+                },
+                { threshold: 0.1 } // Trigger when 10% of the element is visible
+            );
+
+            fadeElements.forEach((element) => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
